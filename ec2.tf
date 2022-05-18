@@ -3,6 +3,9 @@ resource "aws_instance" "ami-instance" {
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
   ami                    = data.aws_ami.ami.id
   iam_instance_profile   = "dev_instance_profile"
+  tags = {
+    Name = "${var.COMPONENT}-ami"
+  }
 }
 
 resource "null_resource" "app-setup" {
