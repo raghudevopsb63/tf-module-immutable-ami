@@ -2,6 +2,7 @@ resource "aws_instance" "ami-instance" {
   instance_type          = "t3.micro"
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
   ami                    = data.aws_ami.ami.id
+  iam_instance_profile   = "dev_instance_profile"
 }
 
 resource "null_resource" "app-setup" {
